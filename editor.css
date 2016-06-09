@@ -1,0 +1,53 @@
+/*
+ * BBCode Editor
+ */
+
+.editor_wrapper {
+	background-color: #fff;
+	height: auto;
+	width: 100%;
+	/* Font */
+	font-family: Helvetica;
+	/* Padding */
+	padding: 5px;
+	/* Border */
+	border: 1px solid #e8e8e8;
+	/* Border Radius */
+	-moz-border-radius: 5px;
+	     border-radius: 5px;
+}
+
+.editor_wrapper > textarea {
+	width: 100%;
+	min-height: 300px;
+	/* Font */
+	font-family: Helvetica;
+	/* Box Sizing */
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+/* Button Wrapper */
+.editor_wrapper > .button_wrapper {
+	overflow: auto;
+}
+
+.editor_wrapper > .button_wrapper > a, .editor_wrapper > .button_wrapper > a:link {
+	float: left;
+	min-width: 15px;
+	height: auto;
+	cursor: pointer;
+	/* Font */
+	color: #000;
+	text-align: center;
+	text-decoration: none;
+	/* Border */
+	border: 1px solid #e8e8e8;
+	/* Padding */
+	padding: 2px;
+}
+
+.editor_wrapper > .button_wrapper > a:hover {
+	background-color: #f4f4f4;
+}
