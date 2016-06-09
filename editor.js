@@ -2,13 +2,10 @@
 
 	$.fn.editor = function( options ) {
 
-		var defaults = {
-			buttons: {
-
-			}
-		};
+		var defaults = { buttons: {} };
 
 		var settings = $.extend({}, defaults, options);
+		console.log(settings);
 
 		var defaultButtons  = {
 			'bold': {
@@ -47,13 +44,19 @@
 				var start           = relatedTextarea[0].selectionStart;
 				var end             = relatedTextarea[0].selectionEnd;
 				var selectedText    = relatedTextarea.val().substr(start, end);
-				console.log(len);
 
 				//Replacing.
 				var buttonClicked   = $(this).attr('data-editor-button');
+				if( defaultButtons[buttonClicked] === undefined )
+				{
+					var replacement = settings.buttons[buttonClicked].code.replace(/{SELTEXT}/g, selectedText);
+				}
+				else
+				{
+					var replacement = defaultButtons[buttonClicked].code.replace(/{SELTEXT}/g, selectedText);
+				}
 				//var codeReplace     = defaultButtons[buttonClicked].code.split('{SELTEXT}');
 				//var replacement     = codeReplace[0] + selectedText + codeReplace[1];
-				var replacement = defaultButtons[buttonClicked].code.replace(/{SELTEXT}/g, selectedText);
 
 				//Put the values in the textarea.
 				relatedTextarea.val(relatedTextarea.val().substring(0, start) + replacement + relatedTextarea.val().substring(end, len));
@@ -69,6 +72,10 @@
 
 			var buttons = '';
 			$.each(defaultButtons, function(index, value) {
+				buttons += '<a title="' + index + '" data-editor-action="button" data-editor-button="' + index + '" data-editor-parent="' + editorName + '">' + value.buttonDisplay + '</a>';
+			});
+
+			$.each(settings.buttons, function(index, value) {
 				buttons += '<a title="' + index + '" data-editor-action="button" data-editor-button="' + index + '" data-editor-parent="' + editorName + '">' + value.buttonDisplay + '</a>';
 			});
 

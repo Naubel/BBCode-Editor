@@ -18,7 +18,14 @@
     <script src="editor.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-      $('.editor').editor();
+      $('.editor').editor({
+        buttons: {
+          'red': {
+            buttonDisplay: 'RED',
+            code: '[color=#f43500]{SELTEXT}[/color]'
+          }
+        }
+      });
     });
     </script>
 
